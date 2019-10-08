@@ -1,6 +1,6 @@
-# [johnlim.dev](https://johnlim.dev/)
+# [P90 Studio LLC Website](https://p90.studio/)
 
-My personal website featuring some of my past works and projects.
+Source code for P90 Studio LLC landing page.
 
 ## Prerequisites
 
