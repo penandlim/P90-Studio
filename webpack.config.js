@@ -23,6 +23,13 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.(png|jpe?g|gif)$/i,
+                loader: 'file-loader',
+                options: {
+                    name: 'images/[name].[ext]',
+                },
+            },
+            {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
@@ -60,9 +67,10 @@ module.exports = {
             template: "./src/index.html",
             filename: "./index.html"
         }),
-        new HTMLInlineCSSWebpackPlugin(),
+        // new HTMLInlineCSSWebpackPlugin(),
         new DynamicCdnWebpackPlugin(),
         new CopyPlugin([
+            { from: 'src/error.html', to: 'error.html' },
             { from: 'src/images', to: 'images' }
         ])
     ],

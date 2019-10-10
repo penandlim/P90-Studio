@@ -8,14 +8,11 @@
     "stats": "cross-env NODE_ENV=production webpack --mode production --profile --json > stats.json"
   },
   "dependencies": {
-    "@tweenjs/tween.js": "^18.3.1",
     "animejs": "^3.1.0",
     "bootstrap": "^4.3.1",
-    "grained": "0.0.2",
     "jquery": "^3.4.1",
     "loaders.css": "^0.1.2",
     "popper.js": "^1.15.0",
-    "postprocessing": "^6.7.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "three": "^0.108.0"
@@ -34,6 +31,7 @@
     "css-loader": "^3.2.0",
     "dynamic-cdn-webpack-plugin": "^4.0.0",
     "expose-loader": "^0.7.5",
+    "file-loader": "^4.2.0",
     "html-inline-css-webpack-plugin": "^1.8.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
@@ -44,10 +42,10 @@
     "postcss-loader": "^3.0.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
+    "terser-webpack-plugin": "latest",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.41.1",
     "webpack-cli": "^3.3.8",
-    "webpack-dev-server": "^3.8.0",
-    "terser-webpack-plugin": "latest"
+    "webpack-dev-server": "^3.8.0"
   }
 }
