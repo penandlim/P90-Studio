@@ -4,6 +4,8 @@ const CopyPlugin = require('copy-webpack-plugin');
 const DynamicCdnWebpackPlugin = require('dynamic-cdn-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default;
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -14,6 +16,9 @@ module.exports = {
     devServer: {
         contentBase: 'src/', //disk location
         watchContentBase: true
+    },
+    optimization: {
+        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
     },
     module: {
         rules: [
@@ -35,6 +40,14 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader']
+            },
+            {
+                test: /\.(scss)$/,
+                use: [MiniCssExtractPlugin.loader, {
+                    loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } // translates CSS into CommonJS modules
+                },  {
+                    loader: 'sass-loader', options: { sourceMap: true } // compiles Sass to CSS
+                }]
             }
         ]
     },
@@ -50,14 +63,8 @@ module.exports = {
         new HTMLInlineCSSWebpackPlugin(),
         new DynamicCdnWebpackPlugin(),
         new CopyPlugin([
-            { from: 'src/webfonts', to: 'webfonts' },
-            { from: 'src/css', to: 'css' },
-            { from: 'src/works.json', to: 'works.json' },
-            { from : 'src/videos', to: 'videos'},
-            { from : 'src/img', to: 'img'},
-            { from: "src/unityprojects", to: "unityprojects"}
+            { from: 'src/images', to: 'images' }
         ])
-
     ],
     mode: 'production'
 };
